@@ -62,3 +62,80 @@ window.addEventListener('load', () => {
     }
   });
 });
+
+// Mobile menu toggle
+const navToggle = document.getElementById('navToggle');
+const navMenu = document.getElementById('navMenu');
+const navBackdrop = document.getElementById('navBackdrop');
+
+const closeMenu = () => {
+  navToggle.classList.remove('is-open');
+  navMenu.classList.remove('is-open');
+  navBackdrop.classList.remove('is-open');
+  navToggle.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+};
+const openMenu = () => {
+  navToggle.classList.add('is-open');
+  navMenu.classList.add('is-open');
+  navBackdrop.classList.add('is-open');
+  navToggle.setAttribute('aria-expanded', 'true');
+  document.body.style.overflow = 'hidden';
+};
+
+if (navToggle) {
+  navToggle.addEventListener('click', () => {
+    if (navMenu.classList.contains('is-open')) closeMenu();
+    else openMenu();
+  });
+  navBackdrop.addEventListener('click', closeMenu);
+  navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+  window.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+  window.addEventListener('resize', () => { if (window.innerWidth > 900) closeMenu(); });
+}
+
+// Back-to-top
+const toTop = document.getElementById('toTop');
+if (toTop) {
+  window.addEventListener('scroll', () => {
+    toTop.classList.toggle('is-visible', window.scrollY > 400);
+  }, { passive: true });
+  toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+}
+
+// Contact form (Formspree AJAX submit)
+const contactForm = document.getElementById('contactForm');
+const formStatus = document.getElementById('formStatus');
+if (contactForm) {
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = '전송 중...';
+    formStatus.className = 'form-status';
+    formStatus.textContent = '';
+
+    try {
+      const res = await fetch(contactForm.action, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        formStatus.classList.add('is-success');
+        formStatus.textContent = '의견이 접수되었습니다. 감사합니다!';
+        contactForm.reset();
+      } else {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.errors?.[0]?.message || '전송에 실패했습니다.');
+      }
+    } catch (err) {
+      formStatus.classList.add('is-error');
+      formStatus.textContent = err.message || '네트워크 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.';
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+    }
+  });
+}

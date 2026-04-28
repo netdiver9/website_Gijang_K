@@ -2,9 +2,24 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#0a0a14" />
+<meta name="format-detection" content="telephone=no" />
 <title>기장 K-Culture Town | K-Culture Town Construction Project in Gijang</title>
 <meta name="description" content="전 세계가 한국을 주목하는 지금, 한국의 문화를 보고 듣고 느낄 수 있는 단 한 곳! 기장 K-Culture Town 조성사업" />
+
+<!-- Open Graph / SNS -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="기장 K-Culture Town | 국내 최대 한류 콤플렉스" />
+<meta property="og:description" content="75,000석 K-아레나, 7개 테마존, 약 1,360,000㎡ — 한국문화의 모든 것을 한 곳에." />
+<meta property="og:locale" content="ko_KR" />
+<meta property="og:site_name" content="기장 K-Culture Town" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<!-- Favicon (inline SVG) -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23ff2e63'/%3E%3Cstop offset='0.5' stop-color='%237c3aed'/%3E%3Cstop offset='1' stop-color='%2300d4ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Ctext x='50%25' y='54%25' font-family='Arial Black,sans-serif' font-size='40' font-weight='900' fill='white' text-anchor='middle' dominant-baseline='middle'%3EK%3C/text%3E%3C/svg%3E" />
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23ff2e63'/%3E%3Cstop offset='0.5' stop-color='%237c3aed'/%3E%3Cstop offset='1' stop-color='%2300d4ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Ctext x='50%25' y='54%25' font-family='Arial Black,sans-serif' font-size='40' font-weight='900' fill='white' text-anchor='middle' dominant-baseline='middle'%3EK%3C/text%3E%3C/svg%3E" />
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Nanum+Pen+Script&display=swap" rel="stylesheet" />
@@ -19,7 +34,7 @@
       <span class="logo__mark">K</span>
       <span class="logo__text">기장 <strong>K-CULTURE TOWN</strong></span>
     </a>
-    <nav class="nav__menu">
+    <nav class="nav__menu" id="navMenu">
       <a href="#overview">과업개요</a>
       <a href="#why">왜 기장인가</a>
       <a href="#zones">핵심시설</a>
@@ -28,8 +43,12 @@
       <a href="#contact">문의</a>
     </nav>
     <button class="nav__cta" onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})">참여하기</button>
+    <button class="nav__toggle" id="navToggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="navMenu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
+<div class="nav__backdrop" id="navBackdrop"></div>
 
 <!-- ===================== HERO ===================== -->
 <section id="top" class="hero">
@@ -486,12 +505,12 @@
     <h2 class="contact__title">기장 K-Culture Town,<br/>여러분의 의견을 기다립니다.</h2>
     <p class="contact__desc">버추얼 트윈 기반 개방형 플랫폼을 통해 주민 의견을 충분히 반영하여 사업을 추진합니다.<br/>의견을 남겨주시면 K-Culture Town의 미래에 반영됩니다.</p>
 
-    <form class="contact__form" onsubmit="event.preventDefault(); alert('의견이 접수되었습니다. 감사합니다!'); this.reset();">
+    <form class="contact__form" id="contactForm" action="https://formspree.io/f/xgorwywd" method="POST">
       <div class="form-row">
-        <input type="text" placeholder="성함" required />
-        <input type="email" placeholder="이메일" required />
+        <input type="text" name="name" placeholder="성함" required />
+        <input type="email" name="email" placeholder="이메일" required />
       </div>
-      <select required>
+      <select name="interest" required>
         <option value="">관심 분야를 선택해 주세요</option>
         <option>K-아레나 / 공연</option>
         <option>K-POP 문화 컴플렉스</option>
@@ -501,8 +520,10 @@
         <option>숙박 / 관광</option>
         <option>민간 투자 문의</option>
       </select>
-      <textarea placeholder="K-Culture Town에 대한 의견을 남겨주세요." rows="5" required></textarea>
+      <textarea name="message" placeholder="K-Culture Town에 대한 의견을 남겨주세요." rows="5" required></textarea>
+      <input type="hidden" name="_subject" value="기장 K-Culture Town 사이트 의견 접수" />
       <button type="submit" class="btn btn--primary btn--full">의견 보내기 →</button>
+      <p class="form-status" id="formStatus" aria-live="polite"></p>
     </form>
   </div>
 </section>
@@ -537,6 +558,7 @@
   </div>
 </footer>
 
+<button class="to-top" id="toTop" aria-label="맨 위로" title="맨 위로">↑</button>
 <script src="script.js"></script>
 </body>
 </html>
