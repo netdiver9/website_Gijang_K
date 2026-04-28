@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://netdiver9.github.io/website_Gijang_K/sitemap.xml

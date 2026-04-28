@@ -1,6 +1,44 @@
 /* ===================== RESET & BASE ===================== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+/* Skip to content (a11y) */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 200;
+  padding: 0.8rem 1.4rem;
+  background: #0a0a14;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 0 0 12px 0;
+}
+.skip-link:focus { left: 0; }
+
+/* Language toggle: default Korean visible, English hidden */
+[data-lang="en"] { display: none; }
+body.lang-en [data-lang="ko"] { display: none; }
+body.lang-en [data-lang="en"] { display: inline; }
+body.lang-en [data-lang="en"].block { display: block; }
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid var(--gray-2);
+  border-radius: 100px;
+  background: white;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--dark);
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.lang-switch:hover { border-color: var(--primary); color: var(--primary); }
+.lang-switch__sep { color: var(--gray-3); font-weight: 400; }
+.lang-switch__active { color: var(--primary); }
 body {
   font-family: 'Noto Sans KR', system-ui, -apple-system, sans-serif;
   font-weight: 400;
@@ -127,8 +165,9 @@ ul { list-style: none; }
 .nav__backdrop.is-open { display: block; opacity: 1; }
 
 @media (max-width: 900px) {
-  .nav__inner { padding: 0.8rem 1.2rem; gap: 1rem; }
+  .nav__inner { padding: 0.8rem 1.2rem; gap: 0.6rem; }
   .logo__text { font-size: 0.85rem; }
+  .lang-switch { font-size: 0.7rem; padding: 0.35rem 0.55rem; }
   .nav__menu {
     position: fixed;
     top: 0; right: 0;
@@ -1463,4 +1502,164 @@ ul { list-style: none; }
   .why-card__nums { grid-template-columns: 1fr; }
 
   .to-top { right: 0.8rem; bottom: 0.8rem; width: 42px; height: 42px; }
+}
+
+/* ===================== HERO IMAGE OVERLAY ===================== */
+.hero__photo {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=1920&auto=format&fit=crop&q=70');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.18;
+  mix-blend-mode: lighten;
+  z-index: 0;
+}
+
+/* Zone media (header image at top of card) */
+.zone__media {
+  position: relative;
+  margin: -2.5rem -2rem 1.5rem;
+  height: 160px;
+  overflow: hidden;
+  border-radius: 28px 28px 0 0;
+  background: var(--gray-1);
+}
+.zone__media img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+.zone:hover .zone__media img { transform: scale(1.06); }
+.zone__media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.35));
+}
+.zone--main .zone__media {
+  margin: 0;
+  height: 100%;
+  min-height: 240px;
+  border-radius: 20px;
+  grid-row: 1 / -1;
+  grid-column: 2;
+  align-self: stretch;
+}
+.zone--main { grid-template-columns: 1.3fr 1fr; }
+@media (max-width: 1024px) {
+  .zone--main { grid-template-columns: 1fr; }
+  .zone--main .zone__media { grid-row: auto; grid-column: auto; min-height: 200px; }
+}
+@media (max-width: 900px) {
+  .zone__media { margin: -2rem -1.5rem 1.2rem; height: 140px; border-radius: 22px 22px 0 0; }
+}
+
+/* When media exists, push number below image so it doesn't overlap */
+.zone__media ~ .zone__num {
+  top: 130px;
+  color: rgba(255,255,255,0.95);
+  text-shadow: 0 2px 12px rgba(0,0,0,0.7);
+}
+.zone:hover .zone__media ~ .zone__num {
+  background: none;
+  -webkit-text-fill-color: rgba(255,255,255,0.95);
+  color: rgba(255,255,255,0.95);
+}
+@media (max-width: 900px) {
+  .zone__media ~ .zone__num { top: 110px; }
+}
+.zone--main .zone__num {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  right: auto;
+  z-index: 3;
+  color: rgba(255,255,255,0.25);
+}
+
+/* Arena rendering image */
+.rendering-photo {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.55;
+  z-index: 1;
+}
+.rendering-stage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10,10,20,0.3), rgba(10,10,20,0.7));
+  z-index: 2;
+}
+.rendering-stage > *:not(.rendering-photo) { z-index: 3; }
+.rendering-photo + .rendering-light,
+.rendering-photo ~ .rendering-light,
+.rendering-photo ~ .rendering-stadium,
+.rendering-photo ~ .rendering-fireworks { position: absolute; }
+
+/* ===================== REDUCED MOTION ===================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+  .hero__scroll span { animation: none; background: rgba(255,255,255,0.4); }
+  .map-node__circle--main,
+  .timeline__dot--current,
+  .gradient-text,
+  .rendering-light,
+  .stadium-field,
+  .rendering-fireworks span {
+    animation: none !important;
+  }
+}
+
+/* ===================== PRINT ===================== */
+@media print {
+  *, *::before, *::after {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+  body { font-size: 11pt; line-height: 1.5; }
+  .nav, .hero__scroll, .nav__toggle, .nav__backdrop,
+  .to-top, .lang-switch, .contact__form, .hero__cta,
+  .arena__bg, .hero__bg, .hero__grid, .hero__photo,
+  .rendering-stage, .section--contact::before,
+  .pillar::before, .zone::before { display: none !important; }
+  .hero, .section, .section--why, .section--effect,
+  .section--arena, .section--contact, .footer {
+    padding: 1rem 0 !important;
+    page-break-inside: avoid;
+    background: #fff !important;
+  }
+  .hero { min-height: auto; }
+  .hero__title, .section__title, .accent, .accent-light, .gradient-text,
+  .stat__num, .pillar__num, .why-card__nums strong, .arena-card__specs strong.hot,
+  .bm__num {
+    -webkit-text-fill-color: initial !important;
+    background: none !important;
+  }
+  .zones, .pillars, .effect-grid, .overview-cards, .arena-compare,
+  .benchmark__row, .why-grid, .footer__inner, .footer__links {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.8rem !important;
+  }
+  .zone, .pillar, .ov-card, .arena-card, .effect-card,
+  .why-card, .why-card--feature, .hub, .benchmark {
+    border: 1px solid #ccc !important;
+    page-break-inside: avoid;
+  }
+  a { text-decoration: underline; }
+  .timeline__line { background: #ccc !important; }
+  .timeline__dot { border-color: #888 !important; }
 }

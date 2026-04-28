@@ -103,6 +103,50 @@ if (toTop) {
   toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }
 
+// Language toggle (KO ⇄ EN)
+const langSwitch = document.getElementById('langSwitch');
+const langKoLabel = document.getElementById('langKo');
+const langEnLabel = document.getElementById('langEn');
+
+const setLang = (lang) => {
+  const isEn = lang === 'en';
+  document.documentElement.lang = isEn ? 'en' : 'ko';
+  document.body.classList.toggle('lang-en', isEn);
+
+  if (langKoLabel && langEnLabel) {
+    langKoLabel.classList.toggle('lang-switch__active', !isEn);
+    langEnLabel.classList.toggle('lang-switch__active', isEn);
+  }
+
+  // Swap placeholders
+  document.querySelectorAll('[data-placeholder-ko]').forEach(el => {
+    el.placeholder = isEn ? el.dataset.placeholderEn : el.dataset.placeholderKo;
+  });
+
+  // Swap <option> text (HTML inside option doesn't render)
+  document.querySelectorAll('option[data-ko]').forEach(opt => {
+    opt.textContent = isEn ? opt.dataset.en : opt.dataset.ko;
+  });
+
+  try { localStorage.setItem('lang', isEn ? 'en' : 'ko'); } catch (e) {}
+};
+
+if (langSwitch) {
+  langSwitch.addEventListener('click', () => {
+    const cur = document.body.classList.contains('lang-en') ? 'en' : 'ko';
+    setLang(cur === 'en' ? 'ko' : 'en');
+  });
+}
+// Restore saved language (or use browser default)
+(() => {
+  let saved = null;
+  try { saved = localStorage.getItem('lang'); } catch (e) {}
+  if (!saved) {
+    saved = (navigator.language || 'ko').toLowerCase().startsWith('ko') ? 'ko' : 'en';
+  }
+  setLang(saved);
+})();
+
 // Contact form (Formspree AJAX submit)
 const contactForm = document.getElementById('contactForm');
 const formStatus = document.getElementById('formStatus');

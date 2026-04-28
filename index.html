@@ -24,8 +24,47 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Nanum+Pen+Script&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "GovernmentProject",
+      "name": "기장 K-Culture Town 조성사업",
+      "alternateName": "K-Culture Town Construction Project in Gijang",
+      "description": "75,000석 K-아레나를 포함한 7개 테마존, 약 1,360,000㎡ 규모의 국내 최대 한류 콤플렉스 조성 프로젝트.",
+      "startDate": "2025-02",
+      "endDate": "2026-02",
+      "agent": {
+        "@type": "GovernmentOrganization",
+        "name": "부산광역시 기장군"
+      },
+      "location": {
+        "@type": "Place",
+        "name": "부산 기장군 장안읍 기룡리 산 120번지 일원",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "KR",
+          "addressRegion": "부산광역시",
+          "addressLocality": "기장군 장안읍"
+        }
+      }
+    },
+    {
+      "@type": "WebSite",
+      "url": "https://netdiver9.github.io/website_Gijang_K/",
+      "name": "기장 K-Culture Town",
+      "inLanguage": ["ko", "en"]
+    }
+  ]
+}
+</script>
 </head>
 <body>
+<a href="#mainContent" class="skip-link" data-lang="ko">본문 바로가기</a>
+<a href="#mainContent" class="skip-link" data-lang="en">Skip to main content</a>
 
 <!-- ===================== NAV ===================== -->
 <header class="nav">
@@ -35,15 +74,22 @@
       <span class="logo__text">기장 <strong>K-CULTURE TOWN</strong></span>
     </a>
     <nav class="nav__menu" id="navMenu">
-      <a href="#overview">과업개요</a>
-      <a href="#why">왜 기장인가</a>
-      <a href="#zones">핵심시설</a>
-      <a href="#arena">K-아레나</a>
-      <a href="#timeline">추진경위</a>
-      <a href="#contact">문의</a>
+      <a href="#overview"><span data-lang="ko">과업개요</span><span data-lang="en">Overview</span></a>
+      <a href="#why"><span data-lang="ko">왜 기장인가</span><span data-lang="en">Why Gijang</span></a>
+      <a href="#zones"><span data-lang="ko">핵심시설</span><span data-lang="en">Zones</span></a>
+      <a href="#arena"><span data-lang="ko">K-아레나</span><span data-lang="en">K-Arena</span></a>
+      <a href="#timeline"><span data-lang="ko">추진경위</span><span data-lang="en">Timeline</span></a>
+      <a href="#contact"><span data-lang="ko">문의</span><span data-lang="en">Contact</span></a>
     </nav>
-    <button class="nav__cta" onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})">참여하기</button>
-    <button class="nav__toggle" id="navToggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="navMenu">
+    <button class="lang-switch" id="langSwitch" aria-label="언어 변경 / Change language">
+      <span class="lang-switch__active" id="langKo">KO</span>
+      <span class="lang-switch__sep">/</span>
+      <span id="langEn">EN</span>
+    </button>
+    <button class="nav__cta" onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})">
+      <span data-lang="ko">참여하기</span><span data-lang="en">Get Involved</span>
+    </button>
+    <button class="nav__toggle" id="navToggle" aria-label="메뉴 열기 / Open menu" aria-expanded="false" aria-controls="navMenu">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -51,34 +97,42 @@
 <div class="nav__backdrop" id="navBackdrop"></div>
 
 <!-- ===================== HERO ===================== -->
+<main id="mainContent">
 <section id="top" class="hero">
   <div class="hero__bg"></div>
+  <div class="hero__photo" aria-hidden="true"></div>
   <div class="hero__grid"></div>
   <div class="hero__content">
-    <p class="hero__handwriting">전 세계가 한국을 주목하는 지금<br/>한국의 문화를 보고 듣고 느낄 수 있는 단 한곳!</p>
+    <p class="hero__handwriting">
+      <span data-lang="ko">전 세계가 한국을 주목하는 지금<br/>한국의 문화를 보고 듣고 느낄 수 있는 단 한곳!</span>
+      <span data-lang="en">As the world watches Korea<br/>The one place to see, hear, and feel K-Culture!</span>
+    </p>
     <div class="hero__date">2025. 11</div>
     <h1 class="hero__title">
-      기장<br/>
+      <span data-lang="ko">기장</span><span data-lang="en">Gijang</span><br/>
       <span class="gradient-text">K-CULTURE TOWN</span>
     </h1>
-    <p class="hero__sub">기본구상 및 타당성조사 용역 · K-Culture Town Construction Project in Gijang</p>
+    <p class="hero__sub">
+      <span data-lang="ko">기본구상 및 타당성조사 용역 · K-Culture Town Construction Project in Gijang</span>
+      <span data-lang="en">Master Plan & Feasibility Study · K-Culture Town Construction Project in Gijang</span>
+    </p>
     <div class="hero__stats">
       <div class="stat">
         <div class="stat__num">1,360,000<span>㎡</span></div>
-        <div class="stat__label">사업 대상지 규모</div>
+        <div class="stat__label"><span data-lang="ko">사업 대상지 규모</span><span data-lang="en">Total Site Area</span></div>
       </div>
       <div class="stat">
-        <div class="stat__num">75,000<span>석</span></div>
-        <div class="stat__label">국내 최대 K-아레나</div>
+        <div class="stat__num">75,000<span data-lang="ko">석</span><span data-lang="en">seats</span></div>
+        <div class="stat__label"><span data-lang="ko">국내 최대 K-아레나</span><span data-lang="en">Korea's Largest K-Arena</span></div>
       </div>
       <div class="stat">
-        <div class="stat__num">3<span>만 명</span></div>
-        <div class="stat__label">예상 방문 수요</div>
+        <div class="stat__num">3<span data-lang="ko">만 명</span><span data-lang="en">0K visitors</span></div>
+        <div class="stat__label"><span data-lang="ko">예상 방문 수요</span><span data-lang="en">Expected Daily Visitors</span></div>
       </div>
     </div>
     <div class="hero__cta">
-      <a href="#why" class="btn btn--primary">프로젝트 자세히 보기</a>
-      <a href="#zones" class="btn btn--ghost">핵심 시설 →</a>
+      <a href="#why" class="btn btn--primary"><span data-lang="ko">프로젝트 자세히 보기</span><span data-lang="en">Explore the Project</span></a>
+      <a href="#zones" class="btn btn--ghost"><span data-lang="ko">핵심 시설 →</span><span data-lang="en">Key Zones →</span></a>
     </div>
   </div>
   <div class="hero__scroll">
@@ -89,35 +143,41 @@
 <!-- ===================== OVERVIEW ===================== -->
 <section id="overview" class="section section--overview">
   <div class="section__head">
-    <span class="eyebrow">Ⅰ. 과업의 개요</span>
-    <h2 class="section__title">국내 최초·최대 규모<br/><span class="accent">한류문화공간 조성</span></h2>
-    <p class="section__desc">한류 문화를 중심으로 독창적인 체험과 기술 융합 콘텐츠를 제공해 글로벌 경쟁력을 강화하고,<br/>세계적인 한류 랜드마크로 자리잡아 국내외 방문객에게 전통 문화와 K-콘텐츠가 어우러진 특별한 경험을 선사합니다.</p>
+    <span class="eyebrow"><span data-lang="ko">Ⅰ. 과업의 개요</span><span data-lang="en">Ⅰ. Project Overview</span></span>
+    <h2 class="section__title">
+      <span data-lang="ko">국내 최초·최대 규모<br/><span class="accent">한류문화공간 조성</span></span>
+      <span data-lang="en">Korea's First & Largest<br/><span class="accent">Hallyu Culture Complex</span></span>
+    </h2>
+    <p class="section__desc">
+      <span data-lang="ko">한류 문화를 중심으로 독창적인 체험과 기술 융합 콘텐츠를 제공해 글로벌 경쟁력을 강화하고,<br/>세계적인 한류 랜드마크로 자리잡아 국내외 방문객에게 전통 문화와 K-콘텐츠가 어우러진 특별한 경험을 선사합니다.</span>
+      <span data-lang="en">Centered on Hallyu (Korean Wave), this project delivers original experiences and tech-fusion content,<br/>establishing a global K-Culture landmark that blends traditional culture with modern K-content.</span>
+    </p>
   </div>
 
   <div class="overview-cards">
     <div class="ov-card">
       <div class="ov-card__icon">📍</div>
-      <h3>사업 위치</h3>
-      <p class="ov-card__big">부산 기장군 장안읍 기룡리</p>
-      <p class="ov-card__small">산 120번지 일원 · 약 1,360,000㎡</p>
+      <h3><span data-lang="ko">사업 위치</span><span data-lang="en">Location</span></h3>
+      <p class="ov-card__big"><span data-lang="ko">부산 기장군 장안읍 기룡리</span><span data-lang="en">Giryong-ri, Jangan-eup, Gijang</span></p>
+      <p class="ov-card__small"><span data-lang="ko">산 120번지 일원 · 약 1,360,000㎡</span><span data-lang="en">Mt. 120 area · approx. 1,360,000㎡</span></p>
     </div>
     <div class="ov-card">
       <div class="ov-card__icon">📅</div>
-      <h3>사업 기간</h3>
+      <h3><span data-lang="ko">사업 기간</span><span data-lang="en">Duration</span></h3>
       <p class="ov-card__big">2025.02 ~ 2026.02</p>
-      <p class="ov-card__small">착수일로부터 12개월</p>
+      <p class="ov-card__small"><span data-lang="ko">착수일로부터 12개월</span><span data-lang="en">12 months from kickoff</span></p>
     </div>
     <div class="ov-card">
       <div class="ov-card__icon">🎯</div>
-      <h3>사업 목적</h3>
-      <p class="ov-card__big">도시정체성 확보 · 지역경제 활성화</p>
-      <p class="ov-card__small">국내 최대규모 한국문화 콤플렉스 조성</p>
+      <h3><span data-lang="ko">사업 목적</span><span data-lang="en">Purpose</span></h3>
+      <p class="ov-card__big"><span data-lang="ko">도시정체성 확보 · 지역경제 활성화</span><span data-lang="en">City Identity · Regional Economy</span></p>
+      <p class="ov-card__small"><span data-lang="ko">국내 최대규모 한국문화 콤플렉스 조성</span><span data-lang="en">Korea's largest K-culture complex</span></p>
     </div>
     <div class="ov-card">
       <div class="ov-card__icon">💰</div>
-      <h3>총사업비</h3>
-      <p class="ov-card__big">약 3,292억원</p>
-      <p class="ov-card__small">변경안 기준 (기존안 대비 55% 수준)</p>
+      <h3><span data-lang="ko">총사업비</span><span data-lang="en">Total Budget</span></h3>
+      <p class="ov-card__big"><span data-lang="ko">약 3,292억원</span><span data-lang="en">approx. KRW 329.2B</span></p>
+      <p class="ov-card__small"><span data-lang="ko">변경안 기준 (기존안 대비 55% 수준)</span><span data-lang="en">Revised plan (55% of original)</span></p>
     </div>
   </div>
 
@@ -125,20 +185,20 @@
     <div class="pillar">
       <div class="pillar__num">01</div>
       <h4>DIGITAL PLATFORM</h4>
-      <p class="pillar__title">디지털 플랫폼 기반의 계획 수립</p>
-      <p class="pillar__desc">복합문화공간의 기획, 설계, 시뮬레이션, 그리고 의사결정까지 디지털 데이터를 기반으로 효율적이고 정확한 계획 추진</p>
+      <p class="pillar__title"><span data-lang="ko">디지털 플랫폼 기반의 계획 수립</span><span data-lang="en">Digital-Platform-Driven Planning</span></p>
+      <p class="pillar__desc"><span data-lang="ko">복합문화공간의 기획, 설계, 시뮬레이션, 그리고 의사결정까지 디지털 데이터를 기반으로 효율적이고 정확한 계획 추진</span><span data-lang="en">Data-driven planning, design, simulation, and decision-making for the cultural complex</span></p>
     </div>
     <div class="pillar">
       <div class="pillar__num">02</div>
       <h4>OPERATION</h4>
-      <p class="pillar__title">지속 가능한 운영 계획 수립</p>
-      <p class="pillar__desc">디지털 기술을 활용한 친환경 공간 계획, 주민의 의사결정 참여, 데이터 개방을 통한 투명성 확보 등 복합문화공간의 지속가능성 강화</p>
+      <p class="pillar__title"><span data-lang="ko">지속 가능한 운영 계획 수립</span><span data-lang="en">Sustainable Operations</span></p>
+      <p class="pillar__desc"><span data-lang="ko">디지털 기술을 활용한 친환경 공간 계획, 주민의 의사결정 참여, 데이터 개방을 통한 투명성 확보 등 복합문화공간의 지속가능성 강화</span><span data-lang="en">Eco-friendly design, citizen participation, and open data for long-term sustainability</span></p>
     </div>
     <div class="pillar">
       <div class="pillar__num">03</div>
       <h4>CO-PROSPERITY</h4>
-      <p class="pillar__title">지역 경제와 상생하는 계획 수립</p>
-      <p class="pillar__desc">데이터 분석을 통해 문화 콘텐츠와 지역산업이 어우러진 복합문화공간 조성 및 운영 계획 수립</p>
+      <p class="pillar__title"><span data-lang="ko">지역 경제와 상생하는 계획 수립</span><span data-lang="en">Co-Prosperity with the Region</span></p>
+      <p class="pillar__desc"><span data-lang="ko">데이터 분석을 통해 문화 콘텐츠와 지역산업이 어우러진 복합문화공간 조성 및 운영 계획 수립</span><span data-lang="en">Data-driven integration of culture content with regional industries</span></p>
     </div>
   </div>
 </section>
@@ -147,63 +207,78 @@
 <section id="why" class="section section--why">
   <div class="section__head">
     <span class="eyebrow">Why Gijang K-Arena</span>
-    <h2 class="section__title">왜 <span class="accent">기장 K-아레나</span>인가?</h2>
+    <h2 class="section__title">
+      <span data-lang="ko">왜 <span class="accent">기장 K-아레나</span>인가?</span>
+      <span data-lang="en">Why <span class="accent">Gijang K-Arena</span>?</span>
+    </h2>
   </div>
 
   <div class="why-grid">
     <div class="why-card why-card--feature">
-      <div class="why-card__tag">K-POP 해외에서 폭발적인 인기</div>
-      <h3>케이팝 데몬 헌터스, G-드래곤, 블랙핑크, 트와이스 등<br/>K-POP의 월드 투어 성공</h3>
-      <p>그러나 국내에는 5만 명 이상 규모의 대형 콘서트장이 부재합니다. 잠실주경기장(리모델링 2031년까지 사용불가), 상암월드컵경기장(축구시즌 대관불가), 고양종합운동장(교통·배후시설 미비) 등 한계가 명확합니다.</p>
+      <div class="why-card__tag"><span data-lang="ko">K-POP 해외에서 폭발적인 인기</span><span data-lang="en">K-POP's Global Explosion</span></div>
+      <h3>
+        <span data-lang="ko">케이팝 데몬 헌터스, G-드래곤, 블랙핑크, 트와이스 등<br/>K-POP의 월드 투어 성공</span>
+        <span data-lang="en">K-Pop Demon Hunters, G-Dragon, BLACKPINK, TWICE<br/>and the success of K-POP world tours</span>
+      </h3>
+      <p>
+        <span data-lang="ko">그러나 국내에는 5만 명 이상 규모의 대형 콘서트장이 부재합니다. 잠실주경기장(리모델링 2031년까지 사용불가), 상암월드컵경기장(축구시즌 대관불가), 고양종합운동장(교통·배후시설 미비) 등 한계가 명확합니다.</span>
+        <span data-lang="en">Yet Korea lacks dedicated 50,000+ seat concert venues. Jamsil Stadium (under renovation until 2031), Sangam (unavailable in football season), and Goyang (poor transit) all fall short.</span>
+      </p>
       <div class="why-card__nums">
-        <div><strong>30조 3천억원</strong><span>전 세계 라이브 음악 티켓 판매액</span></div>
-        <div><strong>1조원 (7위)</strong><span>한국 시장 규모</span></div>
+        <div><strong><span data-lang="ko">30조 3천억원</span><span data-lang="en">USD 23B</span></strong><span><span data-lang="ko">전 세계 라이브 음악 티켓 판매액</span><span data-lang="en">Global live music ticket sales</span></span></div>
+        <div><strong><span data-lang="ko">1조원 (7위)</span><span data-lang="en">USD 0.8B (7th)</span></strong><span><span data-lang="ko">한국 시장 규모</span><span data-lang="en">Korean market size</span></span></div>
       </div>
     </div>
 
     <div class="why-card">
-      <h4>🎤 국내 K-POP 전용 대형 공연장 부재</h4>
-      <p>해외공연선호 추세 / 국내 공연 감소로 중소·대형 기획사 양극화 발생</p>
+      <h4>🎤 <span data-lang="ko">국내 K-POP 전용 대형 공연장 부재</span><span data-lang="en">No dedicated large K-POP venue</span></h4>
+      <p><span data-lang="ko">해외공연선호 추세 / 국내 공연 감소로 중소·대형 기획사 양극화 발생</span><span data-lang="en">Overseas-tour preference shrinks domestic shows, polarizing the industry</span></p>
     </div>
     <div class="why-card">
-      <h4>🌱 친환경 건축 방식</h4>
-      <p>주변 지형을 활용한 친환경 건축으로 탄소배출량과 비용을 획기적으로 감소</p>
+      <h4>🌱 <span data-lang="ko">친환경 건축 방식</span><span data-lang="en">Eco-friendly construction</span></h4>
+      <p><span data-lang="ko">주변 지형을 활용한 친환경 건축으로 탄소배출량과 비용을 획기적으로 감소</span><span data-lang="en">Topography-integrated design dramatically cuts both carbon emissions and cost</span></p>
     </div>
     <div class="why-card">
-      <h4>🎓 K-Culture Town 內 아카데미</h4>
-      <p>공연기획자 양성을 통한 지속가능한 K-POP 생태계 조성</p>
+      <h4>🎓 <span data-lang="ko">K-Culture Town 內 아카데미</span><span data-lang="en">On-site Academy</span></h4>
+      <p><span data-lang="ko">공연기획자 양성을 통한 지속가능한 K-POP 생태계 조성</span><span data-lang="en">Training producers for a sustainable K-POP ecosystem</span></p>
     </div>
     <div class="why-card">
-      <h4>🌏 해외관광객 증가 기여</h4>
-      <p>국내 공연을 통해 해외관광객 증가 및 경제성장에 기여</p>
+      <h4>🌏 <span data-lang="ko">해외관광객 증가 기여</span><span data-lang="en">Boosts inbound tourism</span></h4>
+      <p><span data-lang="ko">국내 공연을 통해 해외관광객 증가 및 경제성장에 기여</span><span data-lang="en">Domestic concerts drive inbound visitors and economic growth</span></p>
     </div>
   </div>
 
   <div class="hub">
     <div class="hub__head">
-      <h3>지역 간 관광자원 연계 <span class="accent">허브 역할</span></h3>
-      <p>해운대와 경주 사이 2시간 이내 거리, 가운데 위치한 기장 K-Culture Town은 두 지역 관광자원을 연결하는 복합 관광클러스터로 확장 가능합니다.</p>
+      <h3>
+        <span data-lang="ko">지역 간 관광자원 연계 <span class="accent">허브 역할</span></span>
+        <span data-lang="en">Regional Tourism <span class="accent">Connection Hub</span></span>
+      </h3>
+      <p>
+        <span data-lang="ko">해운대와 경주 사이 2시간 이내 거리, 가운데 위치한 기장 K-Culture Town은 두 지역 관광자원을 연결하는 복합 관광클러스터로 확장 가능합니다.</span>
+        <span data-lang="en">Located between Haeundae and Gyeongju (within 2 hours), Gijang K-Culture Town links both regions into a single tourism cluster.</span>
+      </p>
     </div>
     <div class="hub__map">
       <div class="map-node map-node--north">
         <div class="map-node__circle"></div>
-        <div class="map-node__label"><strong>경주</strong><span>전통문화</span></div>
+        <div class="map-node__label"><strong><span data-lang="ko">경주</span><span data-lang="en">Gyeongju</span></strong><span><span data-lang="ko">전통문화</span><span data-lang="en">Heritage</span></span></div>
       </div>
       <div class="map-node map-node--center">
         <div class="map-node__circle map-node__circle--main">
           <span>K-Culture<br/>TOWN</span>
         </div>
-        <div class="map-node__label"><strong>기장</strong><span>HUB</span></div>
+        <div class="map-node__label"><strong><span data-lang="ko">기장</span><span data-lang="en">Gijang</span></strong><span>HUB</span></div>
       </div>
       <div class="map-node map-node--south">
         <div class="map-node__circle"></div>
-        <div class="map-node__label"><strong>해운대 / 부산</strong><span>해양·영화</span></div>
+        <div class="map-node__label"><strong><span data-lang="ko">해운대 / 부산</span><span data-lang="en">Haeundae / Busan</span></strong><span><span data-lang="ko">해양·영화</span><span data-lang="en">Coast · Cinema</span></span></div>
       </div>
       <div class="map-line map-line--top">
-        <span>1시간 KTX 이동</span>
+        <span><span data-lang="ko">1시간 KTX 이동</span><span data-lang="en">1 hr by KTX</span></span>
       </div>
       <div class="map-line map-line--bot">
-        <span>40분 소요</span>
+        <span><span data-lang="ko">40분 소요</span><span data-lang="en">40 min</span></span>
       </div>
     </div>
   </div>
@@ -212,101 +287,130 @@
 <!-- ===================== ZONES ===================== -->
 <section id="zones" class="section section--zones">
   <div class="section__head">
-    <span class="eyebrow">Ⅱ. 핵심 시설 구성</span>
-    <h2 class="section__title">7개 테마존으로 구성된<br/><span class="accent">국내 최대 K-CULTURE 콤플렉스</span></h2>
-    <p class="section__desc">K-POP, K-Drama, K-Food, K-Beauty, K-Fashion 등 한류의 모든 것을 한 곳에서 경험할 수 있도록 설계되었습니다.</p>
+    <span class="eyebrow"><span data-lang="ko">Ⅱ. 핵심 시설 구성</span><span data-lang="en">Ⅱ. Key Facilities</span></span>
+    <h2 class="section__title">
+      <span data-lang="ko">7개 테마존으로 구성된<br/><span class="accent">국내 최대 K-CULTURE 콤플렉스</span></span>
+      <span data-lang="en">Seven Themed Zones —<br/><span class="accent">Korea's Largest K-Culture Complex</span></span>
+    </h2>
+    <p class="section__desc">
+      <span data-lang="ko">K-POP, K-Drama, K-Food, K-Beauty, K-Fashion 등 한류의 모든 것을 한 곳에서 경험할 수 있도록 설계되었습니다.</span>
+      <span data-lang="en">Experience every facet of Hallyu — K-POP, K-Drama, K-Food, K-Beauty, K-Fashion — all in one place.</span>
+    </p>
   </div>
 
   <div class="zones">
     <article class="zone zone--main">
       <div class="zone__num">01</div>
-      <div class="zone__icon">🎵</div>
-      <h3>K-아레나 (메인 콘서트홀)</h3>
-      <p>국내 최대 K-컬처 전용 공연시설. 최신 음향·조명·무대 기술과 5만석 이상의 수용 규모로 K-POP 콘서트, 팬미팅, 시상식을 안정적으로 유치합니다.</p>
-      <ul>
-        <li>국내 최대 K-컬처 전용 공연시설</li>
-        <li>최신 음향/조명/무대 기술 및 시스템</li>
-        <li>대규모 팬덤 고려 교통/편의시설 연계</li>
-        <li>공연 관련 소비 증가로 세수 증대</li>
-      </ul>
-      <div class="zone__capacity">최대 75,000석</div>
+      <div>
+        <div class="zone__icon">🎵</div>
+        <h3><span data-lang="ko">K-아레나 (메인 콘서트홀)</span><span data-lang="en">K-Arena (Main Concert Hall)</span></h3>
+        <p><span data-lang="ko">국내 최대 K-컬처 전용 공연시설. 최신 음향·조명·무대 기술과 5만석 이상의 수용 규모로 K-POP 콘서트, 팬미팅, 시상식을 안정적으로 유치합니다.</span><span data-lang="en">Korea's largest K-culture-dedicated venue with cutting-edge sound, lighting, and 50,000+ seating for concerts, fan meets, and award shows.</span></p>
+        <ul>
+          <li><span data-lang="ko">국내 최대 K-컬처 전용 공연시설</span><span data-lang="en">Korea's largest K-culture venue</span></li>
+          <li><span data-lang="ko">최신 음향/조명/무대 기술 및 시스템</span><span data-lang="en">State-of-the-art sound, lighting, stage</span></li>
+          <li><span data-lang="ko">대규모 팬덤 고려 교통/편의시설 연계</span><span data-lang="en">Fandom-scale transit & amenities</span></li>
+          <li><span data-lang="ko">공연 관련 소비 증가로 세수 증대</span><span data-lang="en">Concert-driven tax revenue growth</span></li>
+        </ul>
+        <div class="zone__capacity"><span data-lang="ko">최대 75,000석</span><span data-lang="en">Up to 75,000 seats</span></div>
+      </div>
+      <div class="zone__media">
+        <img loading="lazy" alt="K-Arena concert" src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&auto=format&fit=crop&q=70" />
+      </div>
     </article>
 
     <article class="zone">
+      <div class="zone__media">
+        <img loading="lazy" alt="K-POP performance" src="https://images.unsplash.com/photo-1571266028243-d220c6a3a8b1?w=600&auto=format&fit=crop&q=70" />
+      </div>
       <div class="zone__num">02</div>
       <div class="zone__icon">🌟</div>
-      <h3>K-POP 문화 컴플렉스 존</h3>
-      <p>약 5만평에 달하는 K-POP 공간. AR/VR 미디어 플랫폼, 아티스트별 POP-UP STORE, 앨범홍보관, 랜덤플레이 댄스광장 조성.</p>
+      <h3><span data-lang="ko">K-POP 문화 컴플렉스 존</span><span data-lang="en">K-POP Culture Complex</span></h3>
+      <p><span data-lang="ko">약 5만평에 달하는 K-POP 공간. AR/VR 미디어 플랫폼, 아티스트별 POP-UP STORE, 앨범홍보관, 랜덤플레이 댄스광장 조성.</span><span data-lang="en">A 165,000m² K-POP zone with AR/VR media, artist pop-ups, album showcases, and a random-play dance plaza.</span></p>
       <ul>
-        <li>글로벌 팬덤 굿즈 플래그십 스토어</li>
-        <li>홀로그램/VR K-POP 콘서트 체험관</li>
-        <li>K-POP 댄스/보컬 체험 스튜디오</li>
-        <li>아이돌 포토존 및 명예의 거리</li>
+        <li><span data-lang="ko">글로벌 팬덤 굿즈 플래그십 스토어</span><span data-lang="en">Global fandom merch flagship</span></li>
+        <li><span data-lang="ko">홀로그램/VR K-POP 콘서트 체험관</span><span data-lang="en">Hologram/VR concert experience</span></li>
+        <li><span data-lang="ko">K-POP 댄스/보컬 체험 스튜디오</span><span data-lang="en">Dance & vocal studios</span></li>
+        <li><span data-lang="ko">아이돌 포토존 및 명예의 거리</span><span data-lang="en">Idol photo zones & walk of fame</span></li>
       </ul>
     </article>
 
     <article class="zone">
+      <div class="zone__media">
+        <img loading="lazy" alt="K-Drama film set" src="https://images.unsplash.com/photo-1489599162946-648dab87f54f?w=600&auto=format&fit=crop&q=70" />
+      </div>
       <div class="zone__num">03</div>
       <div class="zone__icon">🎬</div>
-      <h3>미디어 플랫폼 존</h3>
-      <p>복합 시네마타운 조성을 통해 흥행 영화 및 미디어 산업의 촬영장소를 그대로 구현하여 체험할 수 있는 공간.</p>
+      <h3><span data-lang="ko">미디어 플랫폼 존</span><span data-lang="en">Media Platform Zone</span></h3>
+      <p><span data-lang="ko">복합 시네마타운 조성을 통해 흥행 영화 및 미디어 산업의 촬영장소를 그대로 구현하여 체험할 수 있는 공간.</span><span data-lang="en">A cinema town recreating iconic film and drama sets for immersive visitor experiences.</span></p>
       <ul>
-        <li>K-드라마/영화 체험 전시관</li>
-        <li>특수효과(VFX/SFX) 체험 전시관</li>
-        <li>Virtual Twin 기술 기반 홍보 플랫폼</li>
-        <li>OST 제작 및 녹음 체험 공간</li>
+        <li><span data-lang="ko">K-드라마/영화 체험 전시관</span><span data-lang="en">K-drama / film experience hall</span></li>
+        <li><span data-lang="ko">특수효과(VFX/SFX) 체험 전시관</span><span data-lang="en">VFX / SFX experience hall</span></li>
+        <li><span data-lang="ko">Virtual Twin 기술 기반 홍보 플랫폼</span><span data-lang="en">Virtual-Twin promotion platform</span></li>
+        <li><span data-lang="ko">OST 제작 및 녹음 체험 공간</span><span data-lang="en">OST production studio</span></li>
       </ul>
     </article>
 
     <article class="zone">
+      <div class="zone__media">
+        <img loading="lazy" alt="Academy library" src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600&auto=format&fit=crop&q=70" />
+      </div>
       <div class="zone__num">04</div>
       <div class="zone__icon">📚</div>
-      <h3>K-CULTURE 아카데미</h3>
-      <p>한국문화의 미래에 대한 연구 및 교육하는 복합 스튜디오와 창작 지원 공유 오피스를 마련하여 글로벌 인재 양성.</p>
+      <h3><span data-lang="ko">K-CULTURE 아카데미</span><span data-lang="en">K-Culture Academy</span></h3>
+      <p><span data-lang="ko">한국문화의 미래에 대한 연구 및 교육하는 복합 스튜디오와 창작 지원 공유 오피스를 마련하여 글로벌 인재 양성.</span><span data-lang="en">Multi-purpose studios and creator co-working spaces nurturing global talent in Korean culture.</span></p>
       <ul>
-        <li>엔터테인먼트 교육 및 인재 양성</li>
-        <li>지역 문화 예술 연계 프로그램</li>
-        <li>K-Medical & 웰니스 전문 교육</li>
-        <li>전통문화 및 도예촌 연계 프로그램</li>
+        <li><span data-lang="ko">엔터테인먼트 교육 및 인재 양성</span><span data-lang="en">Entertainment education & talent</span></li>
+        <li><span data-lang="ko">지역 문화 예술 연계 프로그램</span><span data-lang="en">Regional arts programs</span></li>
+        <li><span data-lang="ko">K-Medical & 웰니스 전문 교육</span><span data-lang="en">K-Medical & wellness training</span></li>
+        <li><span data-lang="ko">전통문화 및 도예촌 연계 프로그램</span><span data-lang="en">Heritage & ceramics village link</span></li>
       </ul>
     </article>
 
     <article class="zone">
+      <div class="zone__media">
+        <img loading="lazy" alt="Korean cuisine" src="https://images.unsplash.com/photo-1583187773574-7c7e7d7b1f50?w=600&auto=format&fit=crop&q=70" />
+      </div>
       <div class="zone__num">05</div>
       <div class="zone__icon">🍱</div>
-      <h3>K-FOOD 존</h3>
-      <p>OTT, 드라마, 예능에 나오는 음식들을 직접 맛볼 수 있는 음식문화거리. 다양한 식음료를 해결할 수 있는 공간.</p>
+      <h3><span data-lang="ko">K-FOOD 존</span><span data-lang="en">K-FOOD Zone</span></h3>
+      <p><span data-lang="ko">OTT, 드라마, 예능에 나오는 음식들을 직접 맛볼 수 있는 음식문화거리. 다양한 식음료를 해결할 수 있는 공간.</span><span data-lang="en">A culinary street featuring dishes from OTT shows, dramas, and variety programs.</span></p>
       <ul>
-        <li>한식 쿠킹 클래스 상설 운영</li>
-        <li>한식 전문점 및 길거리 음식 판매점</li>
-        <li>Theme Food 개발 및 적용</li>
-        <li>지역 특산물 활용 미식 체험 프로그램</li>
+        <li><span data-lang="ko">한식 쿠킹 클래스 상설 운영</span><span data-lang="en">Permanent Korean cooking classes</span></li>
+        <li><span data-lang="ko">한식 전문점 및 길거리 음식 판매점</span><span data-lang="en">Korean restaurants & street food</span></li>
+        <li><span data-lang="ko">Theme Food 개발 및 적용</span><span data-lang="en">Themed-food development</span></li>
+        <li><span data-lang="ko">지역 특산물 활용 미식 체험 프로그램</span><span data-lang="en">Regional specialty tasting tours</span></li>
       </ul>
     </article>
 
     <article class="zone">
+      <div class="zone__media">
+        <img loading="lazy" alt="Korean fashion shopping" src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600&auto=format&fit=crop&q=70" />
+      </div>
       <div class="zone__num">06</div>
       <div class="zone__icon">🛍️</div>
-      <h3>쇼핑 스트리트</h3>
-      <p>기프트샵, 소품샵 등 다양한 K-문화에 관한 상품들을 구매하는 장소. 드라마 속 주인공 의상대여, 아이돌 화장&메이크업 체험 등 다양한 복장 체험 공간.</p>
+      <h3><span data-lang="ko">쇼핑 스트리트</span><span data-lang="en">Shopping Street</span></h3>
+      <p><span data-lang="ko">기프트샵, 소품샵 등 다양한 K-문화에 관한 상품들을 구매하는 장소. 드라마 속 주인공 의상대여, 아이돌 화장&메이크업 체험 등 다양한 복장 체험 공간.</span><span data-lang="en">Gift shops, prop stores, drama-costume rentals, and idol-style makeup experiences.</span></p>
       <ul>
-        <li>K-Fashion & K-Beauty 체험관</li>
-        <li>한복/생활한복 의류 체험</li>
-        <li>전통음식 식당 운영</li>
-        <li>스마트홈 한국 라이프 체험</li>
+        <li><span data-lang="ko">K-Fashion & K-Beauty 체험관</span><span data-lang="en">K-Fashion & K-Beauty experience</span></li>
+        <li><span data-lang="ko">한복/생활한복 의류 체험</span><span data-lang="en">Hanbok / modern-hanbok try-on</span></li>
+        <li><span data-lang="ko">전통음식 식당 운영</span><span data-lang="en">Traditional food restaurants</span></li>
+        <li><span data-lang="ko">스마트홈 한국 라이프 체험</span><span data-lang="en">Smart-home Korean lifestyle</span></li>
       </ul>
     </article>
 
     <article class="zone">
+      <div class="zone__media">
+        <img loading="lazy" alt="Hanok village" src="https://images.unsplash.com/photo-1543165796-5426273eaab3?w=600&auto=format&fit=crop&q=70" />
+      </div>
       <div class="zone__num">07</div>
       <div class="zone__icon">🏨</div>
-      <h3>숙박시설 (K-Hill Village)</h3>
-      <p>한옥마을, OTT나 드라마에 나오는 주거공간을 모티브로 하는 테마형 숙박시설, 리조트 등 조성.</p>
+      <h3><span data-lang="ko">숙박시설 (K-Hill Village)</span><span data-lang="en">Lodging (K-Hill Village)</span></h3>
+      <p><span data-lang="ko">한옥마을, OTT나 드라마에 나오는 주거공간을 모티브로 하는 테마형 숙박시설, 리조트 등 조성.</span><span data-lang="en">Themed lodging and resorts inspired by hanok villages and on-screen Korean homes.</span></p>
       <ul>
-        <li>체류형 K-컬처타운 연계 숙박</li>
-        <li>웰니스 & K-Medical 연계 숙박</li>
-        <li>'탄소 제로' 콘셉트의 숙박시설</li>
-        <li>대규모 팬덤 맞춤형 숙박 지원 시스템</li>
+        <li><span data-lang="ko">체류형 K-컬처타운 연계 숙박</span><span data-lang="en">Stay-and-tour integrated lodging</span></li>
+        <li><span data-lang="ko">웰니스 & K-Medical 연계 숙박</span><span data-lang="en">Wellness & K-Medical lodging</span></li>
+        <li><span data-lang="ko">'탄소 제로' 콘셉트의 숙박시설</span><span data-lang="en">'Carbon Zero' concept lodging</span></li>
+        <li><span data-lang="ko">대규모 팬덤 맞춤형 숙박 지원 시스템</span><span data-lang="en">Fandom-scale lodging support</span></li>
       </ul>
     </article>
   </div>
@@ -316,32 +420,38 @@
 <section id="arena" class="section section--arena">
   <div class="arena__bg"></div>
   <div class="section__head section__head--light">
-    <span class="eyebrow">Ⅲ. K-아레나 구상안</span>
-    <h2 class="section__title">친환경 콘셉트의<br/><span class="accent-light">기장 K-아레나</span></h2>
-    <p class="section__desc section__desc--light">절토 최소화로 건축비 절감 및 에너지 사용 절감 / 산림훼손 및 환경파괴 최소화</p>
+    <span class="eyebrow"><span data-lang="ko">Ⅲ. K-아레나 구상안</span><span data-lang="en">Ⅲ. K-Arena Concept</span></span>
+    <h2 class="section__title">
+      <span data-lang="ko">친환경 콘셉트의<br/><span class="accent-light">기장 K-아레나</span></span>
+      <span data-lang="en">Eco-Friendly<br/><span class="accent-light">Gijang K-Arena</span></span>
+    </h2>
+    <p class="section__desc section__desc--light">
+      <span data-lang="ko">절토 최소화로 건축비 절감 및 에너지 사용 절감 / 산림훼손 및 환경파괴 최소화</span>
+      <span data-lang="en">Minimal earthwork cuts both construction cost and energy use, while preserving forest and ecology.</span>
+    </p>
   </div>
 
   <div class="arena-compare">
     <div class="arena-card">
-      <div class="arena-card__tag">기장 K-아레나 1안</div>
-      <h3>대규모 글로벌 공연장</h3>
+      <div class="arena-card__tag"><span data-lang="ko">기장 K-아레나 1안</span><span data-lang="en">K-Arena Option 1</span></div>
+      <h3><span data-lang="ko">대규모 글로벌 공연장</span><span data-lang="en">Large-scale Global Venue</span></h3>
       <div class="arena-card__specs">
-        <div><span>건축면적</span><strong>약 63,000㎡</strong></div>
-        <div><span>객석수</span><strong>약 75,000석</strong></div>
-        <div><span>연면적</span><strong>28,172㎡</strong></div>
-        <div><span>공사비</span><strong class="hot">약 1,700억원</strong></div>
-        <div><span>층수</span><strong>지하1층 ~ 지상6층</strong></div>
+        <div><span><span data-lang="ko">건축면적</span><span data-lang="en">Building Area</span></span><strong><span data-lang="ko">약 63,000㎡</span><span data-lang="en">approx. 63,000㎡</span></strong></div>
+        <div><span><span data-lang="ko">객석수</span><span data-lang="en">Seats</span></span><strong><span data-lang="ko">약 75,000석</span><span data-lang="en">approx. 75,000</span></strong></div>
+        <div><span><span data-lang="ko">연면적</span><span data-lang="en">Gross Floor</span></span><strong>28,172㎡</strong></div>
+        <div><span><span data-lang="ko">공사비</span><span data-lang="en">Cost</span></span><strong class="hot"><span data-lang="ko">약 1,700억원</span><span data-lang="en">~KRW 170B</span></strong></div>
+        <div><span><span data-lang="ko">층수</span><span data-lang="en">Floors</span></span><strong><span data-lang="ko">지하1층 ~ 지상6층</span><span data-lang="en">B1 to 6F</span></strong></div>
       </div>
     </div>
     <div class="arena-card arena-card--featured">
-      <div class="arena-card__tag arena-card__tag--gold">기장 K-아레나 2안 (변경안)</div>
-      <h3>친환경 집중형 공연장</h3>
+      <div class="arena-card__tag arena-card__tag--gold"><span data-lang="ko">기장 K-아레나 2안 (변경안)</span><span data-lang="en">K-Arena Option 2 (Revised)</span></div>
+      <h3><span data-lang="ko">친환경 집중형 공연장</span><span data-lang="en">Eco-Focused Venue</span></h3>
       <div class="arena-card__specs">
-        <div><span>건축면적</span><strong>약 52,000㎡</strong></div>
-        <div><span>객석수</span><strong>약 55,000석</strong></div>
-        <div><span>연면적</span><strong>20,137㎡</strong></div>
-        <div><span>공사비</span><strong class="hot">약 1,250억원</strong></div>
-        <div><span>층수</span><strong>지하1층 ~ 지상6층</strong></div>
+        <div><span><span data-lang="ko">건축면적</span><span data-lang="en">Building Area</span></span><strong><span data-lang="ko">약 52,000㎡</span><span data-lang="en">approx. 52,000㎡</span></strong></div>
+        <div><span><span data-lang="ko">객석수</span><span data-lang="en">Seats</span></span><strong><span data-lang="ko">약 55,000석</span><span data-lang="en">approx. 55,000</span></strong></div>
+        <div><span><span data-lang="ko">연면적</span><span data-lang="en">Gross Floor</span></span><strong>20,137㎡</strong></div>
+        <div><span><span data-lang="ko">공사비</span><span data-lang="en">Cost</span></span><strong class="hot"><span data-lang="ko">약 1,250억원</span><span data-lang="en">~KRW 125B</span></strong></div>
+        <div><span><span data-lang="ko">층수</span><span data-lang="en">Floors</span></span><strong><span data-lang="ko">지하1층 ~ 지상6층</span><span data-lang="en">B1 to 6F</span></strong></div>
       </div>
     </div>
   </div>
@@ -349,6 +459,7 @@
   <div class="arena-rendering">
     <div class="rendering-frame">
       <div class="rendering-stage">
+        <div class="rendering-photo" style="background-image:url('https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=1600&auto=format&fit=crop&q=70');" aria-hidden="true"></div>
         <div class="rendering-light light--1"></div>
         <div class="rendering-light light--2"></div>
         <div class="rendering-light light--3"></div>
@@ -362,8 +473,8 @@
         </div>
       </div>
       <div class="rendering-caption">
-        <strong>기장 K-아레나 조감도(예시)</strong>
-        <span>지하1층 ~ 지상6층 · 약 50m 높이 · 타원형 그린 돔</span>
+        <strong><span data-lang="ko">기장 K-아레나 조감도(예시)</span><span data-lang="en">Gijang K-Arena Concept (Example)</span></strong>
+        <span><span data-lang="ko">지하1층 ~ 지상6층 · 약 50m 높이 · 타원형 그린 돔</span><span data-lang="en">B1–6F · approx. 50m tall · oval green dome</span></span>
       </div>
     </div>
   </div>
@@ -372,9 +483,15 @@
 <!-- ===================== TIMELINE ===================== -->
 <section id="timeline" class="section section--timeline">
   <div class="section__head">
-    <span class="eyebrow">Ⅳ. 추진경위</span>
-    <h2 class="section__title">17년의 여정,<br/><span class="accent">현재 진행형</span></h2>
-    <p class="section__desc">2007년 동해안권 광역관광개발계획 선도사업 선정부터 현재까지의 추진 경위</p>
+    <span class="eyebrow"><span data-lang="ko">Ⅳ. 추진경위</span><span data-lang="en">Ⅳ. Project Timeline</span></span>
+    <h2 class="section__title">
+      <span data-lang="ko">17년의 여정,<br/><span class="accent">현재 진행형</span></span>
+      <span data-lang="en">17 Years in the Making —<br/><span class="accent">Still Going</span></span>
+    </h2>
+    <p class="section__desc">
+      <span data-lang="ko">2007년 동해안권 광역관광개발계획 선도사업 선정부터 현재까지의 추진 경위</span>
+      <span data-lang="en">From the 2007 East-Coast Tourism Plan designation to the present.</span>
+    </p>
   </div>
 
   <div class="timeline">
@@ -383,72 +500,72 @@
       <div class="timeline__dot"></div>
       <div class="timeline__date">2007.12</div>
       <div class="timeline__content">
-        <h4>동해안권 광역관광개발계획 선도사업 선정</h4>
-        <p>문화체육관광부</p>
+        <h4><span data-lang="ko">동해안권 광역관광개발계획 선도사업 선정</span><span data-lang="en">Selected as East-Coast Tourism Lead Project</span></h4>
+        <p><span data-lang="ko">문화체육관광부</span><span data-lang="en">Ministry of Culture, Sports & Tourism</span></p>
       </div>
     </div>
     <div class="timeline__item">
       <div class="timeline__dot"></div>
       <div class="timeline__date">2009.12</div>
       <div class="timeline__content">
-        <h4>도예촌 관광지 지정 및 조성계획 승인</h4>
-        <p>고시 제2009-521호</p>
+        <h4><span data-lang="ko">도예촌 관광지 지정 및 조성계획 승인</span><span data-lang="en">Ceramic Village tourism designation approved</span></h4>
+        <p><span data-lang="ko">고시 제2009-521호</span><span data-lang="en">Notice No. 2009-521</span></p>
       </div>
     </div>
     <div class="timeline__item">
       <div class="timeline__dot"></div>
       <div class="timeline__date">2015.06</div>
       <div class="timeline__content">
-        <h4>글로벌영상인프라건립사업 업무협약</h4>
-        <p>문체부, 부산시, 기장군, 영진위</p>
+        <h4><span data-lang="ko">글로벌영상인프라건립사업 업무협약</span><span data-lang="en">Global Film Infrastructure MOU signed</span></h4>
+        <p><span data-lang="ko">문체부, 부산시, 기장군, 영진위</span><span data-lang="en">MCST, Busan, Gijang, KOFIC</span></p>
       </div>
     </div>
     <div class="timeline__item">
       <div class="timeline__dot"></div>
       <div class="timeline__date">2018.08</div>
       <div class="timeline__content">
-        <h4>관광지 조성계획 변경 승인 및 도시관리계획 결정</h4>
-        <p>지형도면 고시, 실시계획 인가</p>
+        <h4><span data-lang="ko">관광지 조성계획 변경 승인 및 도시관리계획 결정</span><span data-lang="en">Tourism plan revision & urban-management decision</span></h4>
+        <p><span data-lang="ko">지형도면 고시, 실시계획 인가</span><span data-lang="en">Topographic notice & implementation approval</span></p>
       </div>
     </div>
     <div class="timeline__item">
       <div class="timeline__dot"></div>
       <div class="timeline__date">2025.02</div>
       <div class="timeline__content">
-        <h4>본 용역 계약 및 착수보고</h4>
-        <p>본과업 시작</p>
+        <h4><span data-lang="ko">본 용역 계약 및 착수보고</span><span data-lang="en">Service contract & kickoff report</span></h4>
+        <p><span data-lang="ko">본과업 시작</span><span data-lang="en">Project commencement</span></p>
       </div>
     </div>
     <div class="timeline__item">
       <div class="timeline__dot"></div>
       <div class="timeline__date">2025.03</div>
       <div class="timeline__content">
-        <h4>본 용역 전문자문위원 선정 (총 9인)</h4>
-        <p>문화콘텐츠·관광·경제학·조경환경·문화예술·연출 등</p>
+        <h4><span data-lang="ko">본 용역 전문자문위원 선정 (총 9인)</span><span data-lang="en">9-member expert advisory committee formed</span></h4>
+        <p><span data-lang="ko">문화콘텐츠·관광·경제학·조경환경·문화예술·연출 등</span><span data-lang="en">Culture, tourism, economics, landscape, arts, direction</span></p>
       </div>
     </div>
     <div class="timeline__item">
       <div class="timeline__dot"></div>
       <div class="timeline__date">2025.06</div>
       <div class="timeline__content">
-        <h4>기본구상(안) 작성</h4>
-        <p>전문가 자문 반영</p>
+        <h4><span data-lang="ko">기본구상(안) 작성</span><span data-lang="en">Master plan draft completed</span></h4>
+        <p><span data-lang="ko">전문가 자문 반영</span><span data-lang="en">Expert advisory feedback incorporated</span></p>
       </div>
     </div>
     <div class="timeline__item">
       <div class="timeline__dot"></div>
       <div class="timeline__date">2025.09</div>
       <div class="timeline__content">
-        <h4>개방형 플랫폼 구축 및 오픈</h4>
-        <p>버추얼 트윈 기반 시민 참여 플랫폼</p>
+        <h4><span data-lang="ko">개방형 플랫폼 구축 및 오픈</span><span data-lang="en">Open citizen platform launched</span></h4>
+        <p><span data-lang="ko">버추얼 트윈 기반 시민 참여 플랫폼</span><span data-lang="en">Virtual-Twin citizen participation platform</span></p>
       </div>
     </div>
     <div class="timeline__item timeline__item--current">
       <div class="timeline__dot timeline__dot--current"></div>
       <div class="timeline__date">2025.11</div>
       <div class="timeline__content">
-        <h4>기본구상 및 사업비 비교(안) 작성 <span class="badge-current">현 단계</span></h4>
-        <p>사업의 안정성·속도·재무 건전성 확보를 위한 변경안 도출</p>
+        <h4><span data-lang="ko">기본구상 및 사업비 비교(안) 작성</span><span data-lang="en">Master plan & cost comparison drafted</span> <span class="badge-current"><span data-lang="ko">현 단계</span><span data-lang="en">Current</span></span></h4>
+        <p><span data-lang="ko">사업의 안정성·속도·재무 건전성 확보를 위한 변경안 도출</span><span data-lang="en">Revised plan for stability, speed, and financial soundness</span></p>
       </div>
     </div>
   </div>
@@ -457,42 +574,45 @@
 <!-- ===================== EFFECT ===================== -->
 <section class="section section--effect">
   <div class="section__head">
-    <span class="eyebrow">기대 효과</span>
-    <h2 class="section__title">대형 공연장의 <span class="accent">경제적 효과</span></h2>
+    <span class="eyebrow"><span data-lang="ko">기대 효과</span><span data-lang="en">Expected Impact</span></span>
+    <h2 class="section__title">
+      <span data-lang="ko">대형 공연장의 <span class="accent">경제적 효과</span></span>
+      <span data-lang="en">Economic Impact <span class="accent">of a Mega-Venue</span></span>
+    </h2>
   </div>
 
   <div class="effect-grid">
     <div class="effect-card">
       <div class="effect-card__num">01</div>
-      <h3>생산 및 고용유발</h3>
-      <p>공연장 건설과 운영은 다양한 산업 분야에서 생산을 증대시키고 직접 및 간접적인 고용을 창출.</p>
+      <h3><span data-lang="ko">생산 및 고용유발</span><span data-lang="en">Production & Jobs</span></h3>
+      <p><span data-lang="ko">공연장 건설과 운영은 다양한 산업 분야에서 생산을 증대시키고 직접 및 간접적인 고용을 창출.</span><span data-lang="en">Construction and operations boost production across industries and create direct & indirect jobs.</span></p>
     </div>
     <div class="effect-card">
       <div class="effect-card__num">02</div>
-      <h3>관광 산업 활성화</h3>
-      <p>국내외 유명 스타들의 공연은 콘서트 관광을 유발하여 숙박, 식음료, 교통, 쇼핑 등 지역 관광 산업에 활력을 불어 넣음.</p>
+      <h3><span data-lang="ko">관광 산업 활성화</span><span data-lang="en">Tourism Activation</span></h3>
+      <p><span data-lang="ko">국내외 유명 스타들의 공연은 콘서트 관광을 유발하여 숙박, 식음료, 교통, 쇼핑 등 지역 관광 산업에 활력을 불어 넣음.</span><span data-lang="en">Star concerts drive concert-tourism — energizing lodging, F&B, transit, and shopping.</span></p>
     </div>
     <div class="effect-card">
       <div class="effect-card__num">03</div>
-      <h3>부가가치 창출 및 세수 증대</h3>
-      <p>문화예술 산업은 높은 부가가치율을 가지며, 공연 관련 소비 증가는 티켓·상품 판매를 통해 세수 증가로 이어짐.</p>
+      <h3><span data-lang="ko">부가가치 창출 및 세수 증대</span><span data-lang="en">Value-Add & Tax Revenue</span></h3>
+      <p><span data-lang="ko">문화예술 산업은 높은 부가가치율을 가지며, 공연 관련 소비 증가는 티켓·상품 판매를 통해 세수 증가로 이어짐.</span><span data-lang="en">High value-added in arts; concert spending grows tax revenue through tickets and merch.</span></p>
     </div>
   </div>
 
   <div class="benchmark">
-    <h3>해외 사례 — 싱가포르 National Stadium</h3>
+    <h3><span data-lang="ko">해외 사례 — 싱가포르 National Stadium</span><span data-lang="en">Benchmark — Singapore National Stadium</span></h3>
     <div class="benchmark__row">
       <div class="bm">
-        <div class="bm__num">2배 ↑</div>
-        <div class="bm__txt">싱가포르 공연 목적<br/>방문객 증가</div>
+        <div class="bm__num"><span data-lang="ko">2배 ↑</span><span data-lang="en">2× ↑</span></div>
+        <div class="bm__txt"><span data-lang="ko">싱가포르 공연 목적<br/>방문객 증가</span><span data-lang="en">Singapore concert-purpose<br/>visitor growth</span></div>
       </div>
       <div class="bm">
-        <div class="bm__num">8배 ↑</div>
-        <div class="bm__txt">인근 숙박시설<br/>검색빈도 증가</div>
+        <div class="bm__num"><span data-lang="ko">8배 ↑</span><span data-lang="en">8× ↑</span></div>
+        <div class="bm__txt"><span data-lang="ko">인근 숙박시설<br/>검색빈도 증가</span><span data-lang="en">Nearby lodging<br/>search-frequency surge</span></div>
       </div>
       <div class="bm">
-        <div class="bm__num">55,000명</div>
-        <div class="bm__txt">최대 수용 인원<br/>다목적 스타디움</div>
+        <div class="bm__num"><span data-lang="ko">55,000명</span><span data-lang="en">55,000</span></div>
+        <div class="bm__txt"><span data-lang="ko">최대 수용 인원<br/>다목적 스타디움</span><span data-lang="en">Max capacity<br/>multi-purpose stadium</span></div>
       </div>
     </div>
   </div>
@@ -502,31 +622,38 @@
 <section id="contact" class="section section--contact">
   <div class="contact__inner">
     <span class="eyebrow eyebrow--light">Get Involved</span>
-    <h2 class="contact__title">기장 K-Culture Town,<br/>여러분의 의견을 기다립니다.</h2>
-    <p class="contact__desc">버추얼 트윈 기반 개방형 플랫폼을 통해 주민 의견을 충분히 반영하여 사업을 추진합니다.<br/>의견을 남겨주시면 K-Culture Town의 미래에 반영됩니다.</p>
+    <h2 class="contact__title">
+      <span data-lang="ko">기장 K-Culture Town,<br/>여러분의 의견을 기다립니다.</span>
+      <span data-lang="en">Gijang K-Culture Town<br/>welcomes your voice.</span>
+    </h2>
+    <p class="contact__desc">
+      <span data-lang="ko">버추얼 트윈 기반 개방형 플랫폼을 통해 주민 의견을 충분히 반영하여 사업을 추진합니다.<br/>의견을 남겨주시면 K-Culture Town의 미래에 반영됩니다.</span>
+      <span data-lang="en">Through our Virtual-Twin open platform, public input is fully reflected in the project.<br/>Your feedback shapes the future of K-Culture Town.</span>
+    </p>
 
     <form class="contact__form" id="contactForm" action="https://formspree.io/f/xgorwywd" method="POST">
       <div class="form-row">
-        <input type="text" name="name" placeholder="성함" required />
-        <input type="email" name="email" placeholder="이메일" required />
+        <input type="text" name="name" data-placeholder-ko="성함" data-placeholder-en="Your name" placeholder="성함" required />
+        <input type="email" name="email" data-placeholder-ko="이메일" data-placeholder-en="Email" placeholder="이메일" required />
       </div>
       <select name="interest" required>
-        <option value="">관심 분야를 선택해 주세요</option>
-        <option>K-아레나 / 공연</option>
-        <option>K-POP 문화 컴플렉스</option>
-        <option>미디어 플랫폼 / 영상</option>
-        <option>K-CULTURE 아카데미</option>
-        <option>K-FOOD / 쇼핑</option>
-        <option>숙박 / 관광</option>
-        <option>민간 투자 문의</option>
+        <option value="" data-ko="관심 분야를 선택해 주세요" data-en="Select an area of interest">관심 분야를 선택해 주세요</option>
+        <option data-ko="K-아레나 / 공연" data-en="K-Arena / Performance">K-아레나 / 공연</option>
+        <option data-ko="K-POP 문화 컴플렉스" data-en="K-POP Culture Complex">K-POP 문화 컴플렉스</option>
+        <option data-ko="미디어 플랫폼 / 영상" data-en="Media Platform / Film">미디어 플랫폼 / 영상</option>
+        <option data-ko="K-CULTURE 아카데미" data-en="K-Culture Academy">K-CULTURE 아카데미</option>
+        <option data-ko="K-FOOD / 쇼핑" data-en="K-FOOD / Shopping">K-FOOD / 쇼핑</option>
+        <option data-ko="숙박 / 관광" data-en="Lodging / Tourism">숙박 / 관광</option>
+        <option data-ko="민간 투자 문의" data-en="Private Investment">민간 투자 문의</option>
       </select>
-      <textarea name="message" placeholder="K-Culture Town에 대한 의견을 남겨주세요." rows="5" required></textarea>
+      <textarea name="message" data-placeholder-ko="K-Culture Town에 대한 의견을 남겨주세요." data-placeholder-en="Share your thoughts on K-Culture Town." placeholder="K-Culture Town에 대한 의견을 남겨주세요." rows="5" required></textarea>
       <input type="hidden" name="_subject" value="기장 K-Culture Town 사이트 의견 접수" />
-      <button type="submit" class="btn btn--primary btn--full">의견 보내기 →</button>
+      <button type="submit" class="btn btn--primary btn--full"><span data-lang="ko">의견 보내기 →</span><span data-lang="en">Send Feedback →</span></button>
       <p class="form-status" id="formStatus" aria-live="polite"></p>
     </form>
   </div>
 </section>
+</main>
 
 <!-- ===================== FOOTER ===================== -->
 <footer class="footer">
@@ -535,21 +662,21 @@
       <span class="logo__mark">K</span>
       <div>
         <strong>기장 K-CULTURE TOWN</strong>
-        <p>기본구상 및 타당성조사 용역 · 2025</p>
+        <p><span data-lang="ko">기본구상 및 타당성조사 용역 · 2025</span><span data-lang="en">Master Plan & Feasibility Study · 2025</span></p>
       </div>
     </div>
     <div class="footer__links">
       <div>
-        <h5>주관기관</h5>
-        <p>부산광역시 기장군</p>
+        <h5><span data-lang="ko">주관기관</span><span data-lang="en">Authority</span></h5>
+        <p><span data-lang="ko">부산광역시 기장군</span><span data-lang="en">Gijang-gun, Busan Metropolitan City</span></p>
       </div>
       <div>
-        <h5>사업위치</h5>
-        <p>부산 기장군 장안읍 기룡리 산 120번지 일원</p>
+        <h5><span data-lang="ko">사업위치</span><span data-lang="en">Location</span></h5>
+        <p><span data-lang="ko">부산 기장군 장안읍 기룡리 산 120번지 일원</span><span data-lang="en">Mt. 120, Giryong-ri, Jangan-eup, Gijang, Busan</span></p>
       </div>
       <div>
-        <h5>사업기간</h5>
-        <p>2025.02 — 2026.02 (12개월)</p>
+        <h5><span data-lang="ko">사업기간</span><span data-lang="en">Duration</span></h5>
+        <p><span data-lang="ko">2025.02 — 2026.02 (12개월)</span><span data-lang="en">Feb 2025 — Feb 2026 (12 mo)</span></p>
       </div>
     </div>
   </div>
